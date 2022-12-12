@@ -1,0 +1,17 @@
+// modelsim files
+*.mpf
+/work
+*.wlf
+transcript
+*.log
+*.wdb
+*.mti
+*.vstf
+*.vst
+
+// quartus files
+*.qws
+*.qpf
+*.qsf
+*.qdf
+*.qip
