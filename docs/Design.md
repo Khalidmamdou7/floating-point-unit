@@ -41,10 +41,10 @@ Steps 3 to 5 may be performed more than once.
 ### Addition Algorithm
 
 We will use the algorithm described in Chapter 4 of the book [Computer Organization and Design](https://drive.google.com/file/d/1F1e6T8LvDz1w0ox9NKu9N1k5KbDTgO5l/view). A flowchart of the algorithm is shown below:
-![Addition Algorithm](./screenshots/addition-flowchart.png)
+![Addition Algorithm](../screenshots/addition-flowchart.png)
 
 A schematic of the hardware implementation of the algorithm is shown below:
-![Addition Schematic](./screenshots/addition-schematic.png)
+![Addition Schematic](../screenshots/addition-schematic.png)
 
 ### Subtraction Algorithm
 
@@ -53,7 +53,7 @@ The algorithm for subtraction is similar to the algorithm for addition, except t
 ### Multiplication Algorithm
 
 We will use the algorithm described in Chapter 4 of the book [Computer Organization and Design](https://drive.google.com/file/d/1F1e6T8LvDz1w0ox9NKu9N1k5KbDTgO5l/view). A flowchart of the algorithm is shown below:
-![Multiplication Algorithm](./screenshots/mult-flowchart.png)
+![Multiplication Algorithm](../screenshots/mult-flowchart.png)
 
 We note that the multiplication differs from the addition and subtraction algorithms in the following ways:
 - The exponents are added instead of subtracted (with subtraction of bias)
