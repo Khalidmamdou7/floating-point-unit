@@ -2,7 +2,7 @@
 This is a single-precision (Sp) and a double-precision (Dp) floating point unit (FPU) which could perform the main floating-point operations. 
 The whole FPU is implemented in Verilog HDL.
 
-This project is a group project as a part of the Logic Design II (CMPN111) course at Cairo University. The project requirement description is available [here](Project-Requirements.pptx).
+This project is a group project as a part of the Logic Design II (CMPN111) course at Cairo University. The project requirement description is available [here](./docs/Project-Requirements.pptx).
 
 It is a work in progress and is not yet complete.
 
@@ -21,10 +21,10 @@ It is a work in progress and is not yet complete.
 - Division
 
 ## Design
-The design of the FPU is described in the [Design](Design.md) document.
+The design of the FPU is described in the [Design](./docs/Design.md) document.
 
 ## Implementation
-The guidelines for implementing the FPU are described in the [Implementation](Implementation.md) document.
+The guidelines for implementing the FPU are described in the [Implementation](./docs/Implementation.md) document.
 
 ## How to run the project
 The project is implemented in Verilog HDL and is tested using the ModelSim simulator.
