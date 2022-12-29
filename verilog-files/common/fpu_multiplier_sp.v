@@ -32,6 +32,32 @@ Exponent= Temp_Mantissa[47] ? Temp_Exponent+1'b1 :Temp_Exponent;
 sign=A_sign^B_sign;
 result={sign,Exponent,Mantissa};
 
+
+ // ---------------------Special Cases ----------------------
+ 
+ 
+if(A_Exponent==8'b1 && A_Mantissa==23'b0) begin
+	if (B_Exponent==8'b0 && B_Mantissa==23'b0) // INF * 0 = NaN
+			result=32'b1; // NaN
+	result={sign,8'b1,23'b0}; // INF
+end
+
+else if(B_Exponent==8'b1 && B_Mantissa==23'b0) begin
+	if (A_Exponent==8'b0 && A_Mantissa==23'b0) begin // INF * 0 = NaN
+			result=32'b1; // NaN
+	end
+	result={sign,8'b1,23'b0}; // INF
+end
+
+// NaN  Input =NaN
+else if (A_Exponent==8'b1 && A_Mantissa!=23'b0) begin
+	result=32'b1; //NaN
+end
+else if (B_Exponent==8'b1 && B_Mantissa!=23'b0) begin
+	result=32'b1; //NaN
+end
+
+
 end
 
 endmodule 

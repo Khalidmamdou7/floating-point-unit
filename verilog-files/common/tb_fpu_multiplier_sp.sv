@@ -2,13 +2,11 @@ module tb_fpu_multiplier_sp();
 
   reg [31:0] a, b;
   wire [31:0] c;
-  // Instantiate the multiplier module
+  
   fpu_multiplier_sp singlePrecision(a, b, c);
+  shortreal a_real, b_real,c_real;
 
-  // Declare variables for the test input values
-  shortreal a_real, b_real,c_real,expected_result;
-
-  // Set the test input values and assign them to the input wires
+  
   initial begin
   
 		
@@ -17,11 +15,7 @@ module tb_fpu_multiplier_sp();
     a = $shortrealtobits(a_real);
     b = $shortrealtobits(b_real);
 	 #10;
-	 c_real=$bitstoshortreal(c);
-
-  // Wait for a few clock cycles to allow the multiplier to perform the calculation
-	 
-  // Read the output of the multiplier and compare it to the expected result   
+	 c_real=$bitstoshortreal(c); 
     $display("Test 1: %f * %f = %f \n", a_real, b_real, c_real);
 	 
 	 
@@ -30,12 +24,7 @@ module tb_fpu_multiplier_sp();
     a = $shortrealtobits(a_real);
     b = $shortrealtobits(b_real);
 	 #10;
-	 c_real=$bitstoshortreal(c);
-
-  // Wait for a few clock cycles to allow the multiplier to perform the calculation
-    
-	 
-  // Read the output of the multiplier and compare it to the expected result   
+	 c_real=$bitstoshortreal(c);  
     $display("Test 2: %f * %f = %f \n", a_real, b_real, c_real);
 	 
 	 
@@ -44,12 +33,7 @@ module tb_fpu_multiplier_sp();
     a = $shortrealtobits(a_real);
     b = $shortrealtobits(b_real);
 	 #10;
-	 c_real=$bitstoshortreal(c);
-
-  // Wait for a few clock cycles to allow the multiplier to perform the calculation
-
-	 
-  // Read the output of the multiplier and compare it to the expected result   
+	 c_real=$bitstoshortreal(c);  
     $display("Test 3: %f * %f = %f \n", a_real, b_real, c_real);
 	 
 	 
@@ -59,11 +43,6 @@ module tb_fpu_multiplier_sp();
     b = $shortrealtobits(b_real);
 	 #10;
 	 c_real=$bitstoshortreal(c);
-
-  // Wait for a few clock cycles to allow the multiplier to perform the calculation
-
-	 
-  // Read the output of the multiplier and compare it to the expected result   
     $display("Test 4: %f * %f = %f \n", a_real, b_real, c_real);
 	 
 	 
@@ -72,12 +51,25 @@ module tb_fpu_multiplier_sp();
 	a = $shortrealtobits(a_real);
     b = $shortrealtobits(b_real);
 	 #10;
-	 c_real=$bitstoshortreal(c);
-
-  // Wait for a few clock cycles to allow the multiplier to perform the calculation
-	 
-  // Read the output of the multiplier and compare it to the expected result   
+	 c_real=$bitstoshortreal(c); 
     $display("Test 5: %f * %f = %f \n", a_real, b_real, c_real);
+	 
+	 a_real = 124054.4312345;
+    b_real = -9213743.123655343;
+	 a = $shortrealtobits(a_real);
+    b = $shortrealtobits(b_real);
+	 #10;
+	 c_real=$bitstoshortreal(c);   
+    $display("Test 6: %f * %f = %f \n", a_real, b_real, c_real);
+	 
+	 
+	 a = {1'b1,8'b1,23'b0}; //INF
+	 b=0;
+	 #10;
+	 if( c ==32'b1)
+    $display("Test 7: INF * 0 = NaN \n");
+	 
+	  
   end
 
 
