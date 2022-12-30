@@ -1,4 +1,4 @@
-module fpu_multiplier_dp #(parameter WIDTH=64) (input [WIDTH-1:0] A,input [WIDTH-1:0] B
+module fpu_dp_multiplier #(parameter WIDTH=64) (input [WIDTH-1:0] A,input [WIDTH-1:0] B
 ,output reg [WIDTH-1:0] result);
 
 reg A_sign,B_sign,sign;

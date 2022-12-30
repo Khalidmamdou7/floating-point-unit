@@ -1,9 +1,9 @@
-module tb_fpu_multiplier_sp();
+module tb_fpu_sp_multiplier();
 
   reg [31:0] a, b;
   wire [31:0] c;
   
-  fpu_multiplier_sp singlePrecision(a, b, c);
+  fpu_sp_multiplier singlePrecision(a, b, c);
   shortreal a_real, b_real,c_real;
 
   
@@ -63,11 +63,29 @@ module tb_fpu_multiplier_sp();
     $display("Test 6: %f * %f = %f \n", a_real, b_real, c_real);
 	 
 	 
-	 a = {1'b1,8'b1,23'b0}; //INF
-	 b=0;
+	 a_real = 2139095040;
+    b_real = 0;
+	 a = $shortrealtobits(a_real);
+    b = $shortrealtobits(b_real);
+	 #10;
+	 c_real=$bitstoshortreal(c);  
+	 //if(c_real==2147483647)
+    $display("Test 7: %f * %f = %f \n", a_real, b_real, c_real);
+	 
+	 a_real = 2139095040;
+    b_real = 0;
+	 a = $shortrealtobits(a_real);
+    b = $shortrealtobits(b_real);
+	 #10;
+	 c_real=$bitstoshortreal(c);  
+	 if(c_real==2139095040)
+    $display("Test 7: INF * 0 = NaN \n");
+	 
+	 a = 32'b1; //NaN
+	 b={1'b1,8'b01101010,23'b10101010101010101010000};
 	 #10;
 	 if( c ==32'b1)
-    $display("Test 7: INF * 0 = NaN \n");
+    $display("Test 9: NaN * Integer = NaN \n");
 	 
 	  
   end

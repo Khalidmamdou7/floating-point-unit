@@ -1,9 +1,9 @@
-module tb_fpu_multiplier_dp();
+module tb_fpu_dp_multiplier();
 
   reg [63:0] a, b;
   wire [63:0] c;
   
-  fpu_multiplier_dp doublePrecision(a, b, c);
+  fpu_dp_multiplier doublePrecision(a, b, c);
   real a_real, b_real,c_real;
 
 
