@@ -4,7 +4,8 @@ module fpu_normalizer #(parameter Mantissa_Size=23, parameter Exponent_Size=8) (
     input [Mantissa_Size:0] mantissa,
     input [Exponent_Size-1:0] exponent,
     output reg [Mantissa_Size-1:0] normalized_mantissa,
-    output reg [Exponent_Size-1:0] normalized_exponent
+    output wire [Exponent_Size-1:0] normalized_exponent,
+    output wire overflow_underflow_flag
     );
 
     // if mantissa[Mantissa_Size] is 1, then shift right by 1 and increment exponent
@@ -12,6 +13,8 @@ module fpu_normalizer #(parameter Mantissa_Size=23, parameter Exponent_Size=8) (
 
     reg [Mantissa_Size:0] temp_mantissa;
     reg [Exponent_Size-1:0] temp_exponent;
+
+	assign overflow_underflow_flag = 0;
 
     always @(*) begin
         temp_mantissa = mantissa;
