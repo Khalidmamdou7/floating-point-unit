@@ -3,8 +3,8 @@
 
 module fpu_comparator #(parameter size = 32)
 (
-    input signed [size-1:0] a,
-    input signed [size-1:0] b,
+    input unsigned [size-1:0] a,
+    input unsigned [size-1:0] b,
     output unsigned [size-1:0] difference,
     output sign,
     output overflow
