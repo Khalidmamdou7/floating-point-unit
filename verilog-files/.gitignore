@@ -17,5 +17,8 @@ transcript
 *.qip
 *.bak
 wl*
+*.rpt
+incremental_db
+simulation
 /db
 /output_files

@@ -4,14 +4,16 @@ module tb_fpu_normalizer();
 
 reg [23:0] mantissa;
 reg [7:0] exponent;
-wire [22:0] normalized_mantissa;
-wire [7:0] normalized_exponent;
+reg [22:0] normalized_mantissa;
+reg [7:0] normalized_exponent;
+wire overflow_underflow_flag;
 
 fpu_normalizer fpu_normalizer_inst (
     .mantissa(mantissa),
     .exponent(exponent),
     .normalized_mantissa(normalized_mantissa),
-    .normalized_exponent(normalized_exponent)
+    .normalized_exponent(normalized_exponent),
+    .overflow_underflow_flag(overflow_underflow_flag)
 );
 
 initial begin

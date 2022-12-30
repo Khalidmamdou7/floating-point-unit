@@ -35,27 +35,28 @@ module fpu_sp_adder (
         .overflow(exponent_comparator_overflow)
     );
 
-    wire [22:0] operand_1_mantissa;
-    wire [22:0] operand_2_mantissa;
+    wire [23:0] operand_1_mantissa;
+    wire [23:0] operand_2_mantissa;
     wire operand_1_sign;
     wire operand_2_sign;
 
     // if a_exponent > b_exponent (comp_sign = 0), then operand_1 = a, operand_2 = b
 
-    assign operand_1_mantissa = exponent_comparator_sign ? b_mantissa : a_mantissa;
+    // concat 1 to the mantissa to account for the hidden bit
+    assign operand_1_mantissa = exponent_comparator_sign ? {1'b1, b_mantissa} : {1'b1, a_mantissa};
     assign operand_1_sign = exponent_comparator_sign ? b_sign : a_sign;
-    assign operand_2_mantissa = exponent_comparator_sign ? a_mantissa : b_mantissa;
+    assign operand_2_mantissa = exponent_comparator_sign ? {1'b1, a_mantissa} : {1'b1, b_mantissa};
     assign operand_2_sign = exponent_comparator_sign ? a_sign : b_sign;
 
     // operand 1 is the larger number and operand 2 is the smaller number
     // we need to shift operand 2's mantissa to the right by the difference in exponents
 
-    wire [22:0] operand_2_mantissa_shifted;
+    wire [23:0] operand_2_mantissa_shifted;
     assign operand_2_mantissa_shifted = operand_2_mantissa >> exponent_comparator_diff;
 
-    wire [23:0] result_mantissa_extended;
+    wire [24:0] result_mantissa_extended;
     
-    fpu_big_alu #(.WIDTH(23)) mantissa_adder (
+    fpu_big_alu #(.WIDTH(24)) mantissa_adder (
         .op(1'b0), // 0 = add, 1 = subtract
         .a(operand_1_mantissa),
         .a_sign(operand_1_sign),
@@ -76,6 +77,8 @@ module fpu_sp_adder (
         .overflow_underflow_flag(overflow_underflow_flag)
     );
 
+    // assign result_mantissa = result_mantissa_extended[22:0];
+    // assign result_exponent = biggest_exponent;
     assign result = {result_sign, result_exponent, result_mantissa};
 
 endmodule
