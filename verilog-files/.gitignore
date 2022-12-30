@@ -15,3 +15,7 @@ transcript
 *.qsf
 *.qdf
 *.qip
+*.bak
+wl*
+/db
+/output_files
