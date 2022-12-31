@@ -34,6 +34,6 @@ After that, you need to compile the project and run the testbenches.
 
 ## Contributors
 - [Ahmed Emad]()
-- [Hala Hany]()
+- [Hla Hany]()
 - [Hossam Nabil]()
 - [Khaled Mamdouh]()
