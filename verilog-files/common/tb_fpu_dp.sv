@@ -1,15 +1,15 @@
-module tb_fpu_sp #(parameter WIDTH=32);
+module tb_fpu_dp #(parameter WIDTH=64);
 localparam PERIOD = 10;
 
-shortreal A;
-shortreal B;
+real A;
+real B;
 reg clk;
 reg [1:0] opCode;
-reg [31:0] result;
+reg [63:0] result;
 reg Ready;
 reg Overflow;
 reg Underflow;
-fpu_sp GeneralSp ($shortrealtobits (A), $shortrealtobits (B), clk, opCode, result,Ready,Overflow,Underflow);
+fpu_dp GeneralSp ($realtobits (A), $realtobits (B), clk, opCode, result,Ready,Overflow,Underflow);
 
 
 
@@ -95,67 +95,67 @@ B = -9213743.123655343;
 end
 
 initial begin
-$display("Single Precision\n");
+$display("Double Precision\n");
 
 
 $display("Addition:\n");
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A+B);
 #(PERIOD*2)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A+B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A+B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A+B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 
 #(PERIOD)
 $display("Subtraction:\n");
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A-B);
 #(PERIOD*2)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A-B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A-B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A-B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 
 #(PERIOD)
 $display("Multiplication:\n");
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A*B);
 #(PERIOD*2)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A*B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A*B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A*B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 
 #(PERIOD)
 $display("Division:\n");
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A/B);
 #(PERIOD*2)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A/B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A/B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 $display("A = %f, B = %f, Expected Value = %f\n", A, B, A/B);
 #(PERIOD)
-$display("Result = %f\n",$bitstoshortreal(result));
+$display("Result = %f\n",$bitstoreal(result));
 #(PERIOD)
 
 $finish;
