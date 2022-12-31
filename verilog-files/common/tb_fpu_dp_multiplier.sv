@@ -2,7 +2,8 @@ module tb_fpu_dp_multiplier #(parameter WIDTH=64);
 real A;
 real B;
 reg [63:0] result;
-fpu_dp_multiplier Multi($realtobits (A), $realtobits (B), result);
+reg overflow,underflow;
+fpu_dp_multiplier Multi($realtobits (A), $realtobits (B), result,overflow,underflow);
 
 initial  
 begin
@@ -21,9 +22,6 @@ B = -0.50;
 A = 2.82; 
 B = -0.94; 
 #20
-A = 2234.0132;
-B = -1235.3412;
-#20
 A = 1.0132;
 B = -1235.3412;
 #20
@@ -33,8 +31,12 @@ B = -1235.3412;
 A = 0.0152;
 B = -0.3412;
 #20
-A = 124054.4312345;
-B = -9213743.123655343;
+A = 8E-170;
+B = 7E-157;
+#20
+A = 8E170;
+B = 7E157;
+
 end
 
 initial
@@ -57,9 +59,11 @@ $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A*B,$bitstorea
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A*B,$bitstoreal(result));
 #20
-$display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A*B,$bitstoreal(result));
+if(underflow)
+$display("UnderFlow\n");
 #20
-$display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A*B,$bitstoreal(result));
+if(overflow)
+$display("OverFlow\n");
 $finish;
 end
 endmodule
