@@ -27,16 +27,17 @@ assign B_sign=B[31];
  assign Mantissa=Temp_Mantissa[47] ? Temp_Mantissa[46:24] : Temp_Mantissa[45:23];
 
  //Check for zero Mantissa
- assign zero = (Mantissa==23'd0) ?1'b1:1'b0;
+ assign zero = (Mantissa==23'd0) ? 1'b1 : 1'b0;
  //Exponent
  assign Temp_Exponent=A_Exponent+B_Exponent-127;
  assign Exponent= Temp_Mantissa[47] ? Temp_Exponent+1'b1 :Temp_Exponent;
  
  //OverFlow & UnderFlow
- assign overflow = ((Exponent[8] & !Exponent[7]) &!zero) ? 1'b1:1'b0;
- assign underflow= ((Exponent[8] & Exponent[7]) &!zero)  ? 1'b1:1'b0;
+ assign overflow = ((Exponent[8] & !Exponent[7]) & !zero) ? 1'b1:1'b0;
+ assign underflow= ((Exponent[8] & Exponent[7]) & !zero)  ? 1'b1:1'b0;
+ 
  //Result
- assign result=zero ? {sign,31'd0} : overflow ? {sign,8'b11111111,23'd0} 
- :underflow ?{sign,31'd0} :{sign,Exponent[7:0],Mantissa};
+ assign result = overflow ? {sign,8'b11111111,23'd0} 
+ : underflow ? {sign,31'd0} : {sign,Exponent[7:0],Mantissa};
 
 endmodule 

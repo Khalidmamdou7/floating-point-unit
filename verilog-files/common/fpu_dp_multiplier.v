@@ -36,7 +36,7 @@ assign B_sign=B[63];
  assign overflow = ((Exponent[11] & !Exponent[10]) &!zero) ? 1'b1:1'b0;
  assign underflow= ((Exponent[11] & Exponent[10]) &!zero)  ? 1'b1:1'b0;
  //Result
- assign result=zero ? {sign,63'd0} : overflow ? {sign,11'b11111111111,52'd0} 
- :underflow ?{sign,63'd0} :{sign,Exponent[10:0],Mantissa};
+ assign result = overflow ? {sign,11'b11111111111,52'd0} 
+ : underflow ? {sign,63'd0} : {sign,Exponent[10:0],Mantissa};
 
 endmodule 
