@@ -4,7 +4,6 @@ The whole FPU is implemented in Verilog HDL.
 
 This project is a group project as a part of the Logic Design II (CMPN111) course at Cairo University. The project requirement description is available [here](./docs/Project-Requirements.pptx).
 
-It is a work in progress and is not yet complete.
 
 ## Table of Contents
 - [Features](#features)
@@ -44,5 +43,5 @@ After that, you need to compile the project and run the testbenches.
 | --- | --- | --- |
 | Ahmed Emad | 25% | Multiplication |
 | Hla Hany | 25% | Division |
-| Hossam Nabil | 25% | Subtraction |
+| Hossam Nabil | 25% | Addition |
 | Khaled Mamdouh | 25% | Addition |
