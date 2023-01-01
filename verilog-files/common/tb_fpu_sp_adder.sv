@@ -40,6 +40,14 @@ B = -9213743.123655343;
 #20
 A= 121.3232;
 B= -123.1231;
+#20
+// Overflow Test
+A= 2.21E38;
+B= 2.21E38;
+#20
+// Underflow Test
+A= 2.21E-38;
+B = -2.2E-38;
 end
 
 initial
@@ -47,26 +55,43 @@ begin
 $display("Single Precision Addition\n");
 #15
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
+#20
+$display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
+#20
+$display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoshortreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 $finish;
 end
 endmodule

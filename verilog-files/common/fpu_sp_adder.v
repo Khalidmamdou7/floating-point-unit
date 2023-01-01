@@ -26,14 +26,12 @@ module fpu_sp_adder (
 
     wire [7:0] exponent_comparator_diff;
     wire exponent_comparator_sign;
-    wire exponent_comparator_overflow;
 
     fpu_comparator #(.size(8)) exponent_comparator (
         .a(a_exponent),
         .b(b_exponent),
         .difference(exponent_comparator_diff),
-        .sign(exponent_comparator_sign),
-        .overflow(exponent_comparator_overflow)
+        .sign(exponent_comparator_sign)
     );
 
     wire [23:0] operand_1_mantissa;
@@ -70,17 +68,22 @@ module fpu_sp_adder (
     wire [7:0] biggest_exponent;
     assign biggest_exponent = exponent_comparator_sign ? b_exponent : a_exponent;
 
+    wire normalization_overflow;
+    wire normalization_underflow;
+
     fpu_normalizer #(.Mantissa_Size(23), .Exponent_Size(8)) mantissa_normalizer (
         .mantissa(result_mantissa_extended),
         .exponent(biggest_exponent),
         .normalized_mantissa(result_mantissa),
         .normalized_exponent(result_exponent),
-        .overflow(overflow),
-        .underflow(underflow)
+        .overflow(normalization_overflow),
+        .underflow(normalization_underflow)
     );
 
     // assign result_mantissa = result_mantissa_extended[22:0];
     // assign result_exponent = biggest_exponent;
+    assign overflow = normalization_overflow;
+    assign underflow = normalization_underflow;
     assign result = {result_sign, result_exponent, result_mantissa};
 
 endmodule
