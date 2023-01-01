@@ -13,8 +13,7 @@ module fpu_normalizer #(parameter Mantissa_Size=23, parameter Exponent_Size=8) (
 
     reg [Mantissa_Size+1:0] temp_mantissa;
     reg [Exponent_Size-1:0] temp_exponent;
-
-	assign overflow_underflow_flag = 0;
+    reg temp_flag;
 
     // create a counter to use it in the loop
     reg [Mantissa_Size-1:0] counter;
@@ -35,10 +34,17 @@ module fpu_normalizer #(parameter Mantissa_Size=23, parameter Exponent_Size=8) (
                 end
                 counter = counter + 1;
             end
-            
+        end
+        temp_flag = 0;
+        if (temp_exponent == {(Exponent_Size){1'b1}} || temp_exponent == {(Exponent_Size){1'b0}}) begin
+            temp_flag = 1;
         end
     end
-
+    // Overflow and underflow flag will be triggered if the exponent is smaller than 1 or greater than 254
+    // 1 is the smallest exponent that can be represented in the fpu
+    // 254 is the largest exponent that can be represented in the fpu
+    // check if the exponent after normalization is all 1s or all 0s
+    assign overflow_underflow_flag = temp_flag;
     assign normalized_mantissa = temp_mantissa[Mantissa_Size-1:0];
     assign normalized_exponent = temp_exponent;
 

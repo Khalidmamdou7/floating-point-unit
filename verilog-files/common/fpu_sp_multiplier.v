@@ -1,5 +1,8 @@
-module fpu_sp_multiplier #(parameter WIDTH=32) (input [WIDTH-1:0] A,input [WIDTH-1:0] B
-,output wire [WIDTH-1:0] result,output wire overflow,output wire underflow);
+module fpu_sp_multiplier #(parameter WIDTH=32) (
+    input [WIDTH-1:0] A,
+    input [WIDTH-1:0] B,
+    output wire [WIDTH-1:0] result,
+    output wire overflow,output wire underflow);
 
 wire A_sign,B_sign,sign,zero;
 wire [23:0] A_Mantissa,B_Mantissa;

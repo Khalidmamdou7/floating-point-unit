@@ -1,13 +1,16 @@
-module fpu_dp_divider #(parameter WIDTH=64) (input [WIDTH-1:0] A,input [WIDTH-1:0] B, output [WIDTH-1:0] result);
+module fpu_dp_divider #(parameter WIDTH=64) (
+	input [WIDTH-1:0] A,
+	input [WIDTH-1:0] B, 
+	output [WIDTH-1:0] result, 
+	output wire overflow, 
+	output wire underflow);
 
 	// A/B = A * 1/B
 	wire [WIDTH-1:0] B_reciprocal;
-	wire Overflow;
-	wire Underflow;
 
 	fpu_dp_reciprocal Recip(B, B_reciprocal);
 
-	fpu_dp_multiplier Mult(A, B_reciprocal, result, Overflow, Underflow);
+	fpu_dp_multiplier Mult(A, B_reciprocal, result, overflow, underflow);
 	
 
 endmodule
