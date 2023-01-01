@@ -37,3 +37,12 @@ After that, you need to compile the project and run the testbenches.
 - [Hla Hany]()
 - [Hossam Nabil]()
 - [Khaled Mamdouh]()
+
+## Workload distribution
+
+| Name | Workload | description |
+| --- | --- | --- |
+| Ahmed Emad | 25% | Multiplication |
+| Hla Hany | 25% | Division |
+| Hossam Nabil | 25% | Subtraction |
+| Khaled Mamdouh | 25% | Addition |

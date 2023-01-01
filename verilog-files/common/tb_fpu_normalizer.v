@@ -6,14 +6,16 @@ reg [23:0] mantissa;
 reg [7:0] exponent;
 reg [22:0] normalized_mantissa;
 reg [7:0] normalized_exponent;
-wire overflow_underflow_flag;
+wire overflow;
+wire underflow;
 
 fpu_normalizer fpu_normalizer_inst (
     .mantissa(mantissa),
     .exponent(exponent),
     .normalized_mantissa(normalized_mantissa),
     .normalized_exponent(normalized_exponent),
-    .overflow_underflow_flag(overflow_underflow_flag)
+    .overflow(overflow),
+    .underflow(underflow)
 );
 
 initial begin

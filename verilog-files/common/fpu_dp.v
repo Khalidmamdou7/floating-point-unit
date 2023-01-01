@@ -62,10 +62,10 @@ assign SUB = !OpCode[1] & OpCode[0];
 assign MUL = OpCode[1] & !OpCode[0];	
 assign DIV = OpCode[1] & OpCode[0];
 
-fpu_dp_adder Adder_FPU(Adder_A, Adder_B, Adder_Result, Overflow_Add);
-fpu_dp_adder Subtractor_FPU(Subtractor_A, Subtractor_B, Subtractor_Result, Overflow_Sub);
+fpu_dp_adder Adder_FPU(Adder_A, Adder_B, Adder_Result, Overflow_Add, Underflow_Add);
+fpu_dp_adder Subtractor_FPU(Subtractor_A, Subtractor_B, Subtractor_Result, Overflow_Sub, Underflow_Sub);
 fpu_dp_multiplier Multiplier_FPU(Multiplier_A, Multiplier_B, Multiplier_Result, Overflow_Mul, Underflow_Mul);
-fpu_dp_divider Divider_FPU(Divider_A, Divider_B, Divider_Result);
+fpu_dp_divider Divider_FPU(Divider_A, Divider_B, Divider_Result, Overflow_Div, Underflow_Div);
 
 always @ (posedge clk) begin
 	if (A == NaN || B == NaN) begin

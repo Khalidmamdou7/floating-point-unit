@@ -65,7 +65,7 @@ However, the normalization, overflow/underflow checking, and rounding steps are 
 
 ### Division Algorithm
 
-Note: The division algorithm is not yet implemented.
+We used the numerical method of Newton-Raphson to implement the division algorithm which was explained in the tutorial.
 
 ## Modules
 
@@ -132,7 +132,5 @@ Note: The division algorithm is not yet implemented.
 
 - `fpu_xp_sign_bit_evaluator`: The sign bit evaluator which will be used to evaluate the sign bit of the result, is common between multiplication and division algorithms.
 
-
-### **Common Modules Between Single-precision and Double-precision Algorithms**
 
 - 

@@ -2,7 +2,8 @@ module fpu_dp_adder (
     input [63:0] a,
     input [63:0] b,
     output wire [63:0] result,
-    output wire overflow_underflow_flag
+    output wire overflow,
+    output wire underflow
     );
 
     wire a_sign;
@@ -73,7 +74,8 @@ module fpu_dp_adder (
         .exponent(biggest_exponent),
         .normalized_mantissa(result_mantissa),
         .normalized_exponent(result_exponent),
-        .overflow_underflow_flag(overflow_underflow_flag)
+        .overflow(overflow),
+        .underflow(underflow)
     );
 
     assign result = {result_sign, result_exponent, result_mantissa};

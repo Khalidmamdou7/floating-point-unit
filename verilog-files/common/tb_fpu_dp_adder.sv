@@ -2,8 +2,9 @@ module tb_fpu_dp_adder #(parameter WIDTH=64);
 real A;
 real B;
 reg [63:0] result;
-wire overflow_underflow_flag;
-fpu_dp_adder Add ($realtobits (A), $realtobits (B), result,overflow_underflow_flag);
+wire overflow;
+wire underflow;
+fpu_dp_adder Add ($realtobits (A), $realtobits (B), result,overflow,underflow);
 
 initial  
 begin

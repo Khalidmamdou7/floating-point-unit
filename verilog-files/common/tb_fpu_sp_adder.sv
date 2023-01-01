@@ -2,8 +2,9 @@ module tb_fpu_sp_adder #(parameter WIDTH=32);
 shortreal A;
 shortreal B;
 reg [31:0] result;
-wire overflow_underflow_flag;
-fpu_sp_adder Add ($shortrealtobits (A), $shortrealtobits (B), result,overflow_underflow_flag);
+wire overflow;
+wire underflow;
+fpu_sp_adder Add ($shortrealtobits (A), $shortrealtobits (B), result,overflow,underflow);
 
 initial  
 begin
