@@ -29,7 +29,7 @@ module fpu_normalizer #(parameter Mantissa_Size=23, parameter Exponent_Size=8) (
         end
         else begin
             counter = 0;
-            while (temp_exponent != 0 && temp_mantissa[Mantissa_Size] == 0) begin
+            while (temp_exponent != 0 && temp_mantissa[Mantissa_Size] == 0 && counter != Mantissa_Size) begin
                 if (temp_mantissa != 0) begin
                     temp_mantissa = temp_mantissa << 1;
                     temp_exponent = temp_exponent - 1;

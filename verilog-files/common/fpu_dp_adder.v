@@ -25,14 +25,12 @@ module fpu_dp_adder (
 
     wire [10:0] exponent_comparator_diff;
     wire exponent_comparator_sign;
-    wire exponent_comparator_overflow;
 
     fpu_comparator #(.size(11)) exponent_comparator (
         .a(a_exponent),
         .b(b_exponent),
         .difference(exponent_comparator_diff),
-        .sign(exponent_comparator_sign),
-        .overflow(exponent_comparator_overflow)
+        .sign(exponent_comparator_sign)
     );
 
     wire [52:0] operand_1_mantissa;

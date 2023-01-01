@@ -40,6 +40,14 @@ B = -9213743.123655343;
 #20
 A= 121.3232;
 B= -123.1231;
+#20 
+// Overflow Test
+A = 1.7976931348623157e+308;
+B = 1.7976931348623157e+308;
+#20
+// Underflow Test
+A = 4.9406564584124654e-324;
+B = 4.9406564584124654e-324;
 end
 
 initial
@@ -47,26 +55,43 @@ begin
 $display("Double Precision Addition\n");
 #15
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 #20
 $display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
+#20
+$display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
+#20
+$display("A = %f, B = %f, Expected Value = %f, Result = %f\n",A,B,A+B,$bitstoreal(result));
+$display("Overflow = %b, Underflow = %b\n",overflow,underflow);
 $finish;
 end
 endmodule
